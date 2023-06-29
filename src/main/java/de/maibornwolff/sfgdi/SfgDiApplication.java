@@ -17,6 +17,7 @@ public class SfgDiApplication {
 
 		MyController myController = (MyController) ctx.getBean("myController");
 
+		System.out.println("----- Primary Bean");
 		String greeting = myController.sayHello();
 
 		System.out.println(greeting);
