@@ -1,6 +1,7 @@
 package de.maibornwolff.sfgdi;
 
 import de.maibornwolff.sfgdi.controllers.ConstructorInjectedController;
+import de.maibornwolff.sfgdi.controllers.I18nController;
 import de.maibornwolff.sfgdi.controllers.MyController;
 import de.maibornwolff.sfgdi.controllers.PropertyInjectedController;
 import de.maibornwolff.sfgdi.controllers.SetterInjectedController;
@@ -14,6 +15,9 @@ public class SfgDiApplication {
 
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(SfgDiApplication.class, args);
+
+		I18nController i18nController = (I18nController) ctx.getBean("i18nController");
+		System.out.println(i18nController.sayHello());
 
 		MyController myController = (MyController) ctx.getBean("myController");
 
