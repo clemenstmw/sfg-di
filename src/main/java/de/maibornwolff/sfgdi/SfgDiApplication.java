@@ -3,6 +3,7 @@ package de.maibornwolff.sfgdi;
 import de.maibornwolff.sfgdi.controllers.ConstructorInjectedController;
 import de.maibornwolff.sfgdi.controllers.I18nController;
 import de.maibornwolff.sfgdi.controllers.MyController;
+import de.maibornwolff.sfgdi.controllers.PetController;
 import de.maibornwolff.sfgdi.controllers.PropertyInjectedController;
 import de.maibornwolff.sfgdi.controllers.SetterInjectedController;
 import org.springframework.boot.SpringApplication;
@@ -14,6 +15,10 @@ public class SfgDiApplication {
 
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(SfgDiApplication.class, args);
+
+		PetController petController = ctx.getBean("petController", PetController.class);
+		System.out.println("--- The best pet is...");
+		System.out.println(petController.whichPetIsTheBest());
 
 		I18nController i18nController = (I18nController) ctx.getBean("i18nController");
 		System.out.println(i18nController.sayHello());
