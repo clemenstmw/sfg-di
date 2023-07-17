@@ -6,6 +6,7 @@ import de.maibornwolff.sfgdi.controllers.MyController;
 import de.maibornwolff.sfgdi.controllers.PetController;
 import de.maibornwolff.sfgdi.controllers.PropertyInjectedController;
 import de.maibornwolff.sfgdi.controllers.SetterInjectedController;
+import de.maibornwolff.sfgdi.datasource.FakeDataSource;
 import de.maibornwolff.sfgdi.services.PrototypeBean;
 import de.maibornwolff.sfgdi.services.SingletonBean;
 import org.springframework.boot.SpringApplication;
@@ -57,6 +58,11 @@ public class SfgDiApplication {
 		PrototypeBean prototypeBean2 = ctx.getBean(PrototypeBean.class);
 		System.out.println(prototypeBean2.getMyScope());
 
+		System.out.println();
+		FakeDataSource fakeDataSource = ctx.getBean(FakeDataSource.class);
+		System.out.println(fakeDataSource.getUsername());
+		System.out.println(fakeDataSource.getPassword());
+		System.out.println(fakeDataSource.getJdbcurl());
 	}
 
 }

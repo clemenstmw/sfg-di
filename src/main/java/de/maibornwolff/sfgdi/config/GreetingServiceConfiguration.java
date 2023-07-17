@@ -1,5 +1,6 @@
 package de.maibornwolff.sfgdi.config;
 
+import de.maibornwolff.sfgdi.datasource.FakeDataSource;
 import de.maibornwolff.sfgdi.repository.EnglishGreetingRepository;
 import de.maibornwolff.sfgdi.repository.EnglishGreetingRepositoryImpl;
 import de.maibornwolff.sfgdi.services.ConstructorGreetingService;
@@ -10,15 +11,28 @@ import de.maibornwolff.sfgdi.services.PropertyGreetingService;
 import de.maibornwolff.sfgdi.services.SetterGreetingService;
 import de.maibornwolff.sfgdi.services.pets.PetService;
 import de.maibornwolff.sfgdi.services.pets.PetServiceFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
+import org.springframework.context.annotation.PropertySource;
 
 @ImportResource("classpath:sfgdi-config.xml")
 @Configuration
 public class GreetingServiceConfiguration {
+
+    @Bean
+    FakeDataSource fakeDataSource(@Value("${de.username}") String username,
+                                  @Value("${de.password}") String password,
+                                  @Value("${de.jdbcurl}") String jdbcurl) {
+        FakeDataSource fakeDataSource = new FakeDataSource();
+        fakeDataSource.setUsername(username);
+        fakeDataSource.setPassword(password);
+        fakeDataSource.setJdbcurl(jdbcurl);
+        return fakeDataSource;
+    }
 
     @Bean
     PetServiceFactory petServiceFactory() {
