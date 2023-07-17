@@ -1,0 +1,5 @@
+de:
+  username: devDbUser
+  password: dbdevPassword
+  jdbcurl: DevDbUrl
+
