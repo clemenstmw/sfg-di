@@ -1,6 +1,7 @@
 package de.maibornwolff.sfgdi;
 
 import de.maibornwolff.sfgdi.config.SfgConfiguration;
+import de.maibornwolff.sfgdi.config.SfgConstructorConfig;
 import de.maibornwolff.sfgdi.controllers.ConstructorInjectedController;
 import de.maibornwolff.sfgdi.controllers.I18nController;
 import de.maibornwolff.sfgdi.controllers.MyController;
@@ -70,6 +71,12 @@ public class SfgDiApplication {
 		System.out.println(sfgConfiguration.getUsername());
 		System.out.println(sfgConfiguration.getPassword());
 		System.out.println(sfgConfiguration.getJdbcurl());
+
+		System.out.println();
+		SfgConstructorConfig sfgConstructorConfig = ctx.getBean(SfgConstructorConfig.class);
+		System.out.println(sfgConstructorConfig.getUsername());
+		System.out.println(sfgConstructorConfig.getPassword());
+		System.out.println(sfgConstructorConfig.getJdbcurl());
 	}
 
 }
